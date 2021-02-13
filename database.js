@@ -59,20 +59,19 @@ class Database {
     }
     const atual = dados[indice];
     const objAtualizar = {
-        ...atual,
-        ...modificacoes
+      ...atual,
+      ...modificacoes,
     };
-    dados.splice(indice, 1)
+    dados.splice(indice, 1);
 
-    return await this.escreverArquivo([
-        ...dados,
-        objAtualizar
-    ])
+    return await this.escreverArquivo([...dados, objAtualizar]);
   }
 
   async listar(id) {
     const dados = await this.obterDadosArquivo();
-    const [dadosFiltrados] = dados.filter((item) => (id ? item.id === id : true));
+    const dadosFiltrados = dados.filter((item) =>
+      id ? item.id === id : true
+    );
     return dadosFiltrados;
   }
 }
